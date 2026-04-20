@@ -83,8 +83,14 @@ export class AppService {
     const file = join(process.cwd(), 'src', 'mail', `${templateName}.ejs`);
 
     const template = await renderFile(file, data);
+    const htmlWithStyles = juice(template);
 
-    return juice(template);
+    const sizeInBytes = Buffer.byteLength(htmlWithStyles, 'utf8');
+    const sizeInKb = sizeInBytes / 1024;
+
+    console.log(sizeInKb);
+
+    return juice(htmlWithStyles);
   }
 
   async renderMail() {
@@ -104,5 +110,33 @@ export class AppService {
     const template = await this.getTemplate('benchmarkMoveTable', { indexes });
 
     await this.sendMail(email, 'Benchmark moves', template);
+  }
+
+  async getEmailWeightReport() {
+    const file = join(process.cwd(), 'src', 'mail', `benchmarkMoveTable.ejs`);
+
+    const rawHtml = await renderFile(file, this.indexes);
+
+    const finalHtml = juice(rawHtml);
+
+    const totalBytes = Buffer.byteLength(finalHtml, 'utf8');
+    const cssInlinedBytes = totalBytes - Buffer.byteLength(rawHtml, 'utf8');
+
+    const textOnly = finalHtml.replace(/<[^>]*>/g, '');
+    const textBytes = Buffer.byteLength(textOnly, 'utf8');
+
+    const structureBytes = totalBytes - textBytes;
+
+    return {
+      total: (totalBytes / 1024).toFixed(2) + ' KB',
+      breakdown: {
+        htmlStructure: (structureBytes / 1024).toFixed(2) + ' KB',
+        textContent: (textBytes / 1024).toFixed(2) + ' KB',
+        cssInlined:
+          (cssInlinedBytes > 0 ? (cssInlinedBytes / 1024).toFixed(2) : 0) +
+          ' KB',
+      },
+      isWarning: totalBytes > 102 * 1024,
+    };
   }
 }

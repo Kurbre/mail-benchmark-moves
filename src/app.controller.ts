@@ -18,6 +18,12 @@ export class AppController {
     return this.appService.renderMail();
   }
 
+  @Get('/report')
+  @ApiOperation({ summary: 'Get email weight report' })
+  getRepoert() {
+    return this.appService.getEmailWeightReport();
+  }
+
   @Post('mock/:email')
   @ApiOperation({ summary: 'Отправка письма с мокаными данными' })
   sendMailForMock(@Param('email') email: string) {
