@@ -5,6 +5,7 @@ import juice from 'juice';
 import { join } from 'path';
 import process from 'process';
 import * as nodemailer from 'nodemailer';
+import { Index } from './dto/indexes.dto';
 
 @Injectable()
 export class AppService {
@@ -92,8 +93,14 @@ export class AppService {
     return this.getTemplate('benchmarkMoveTable', { indexes });
   }
 
-  async sendTestMail(email: string) {
+  async sendTestMailForMock(email: string) {
     const indexes = this.indexes;
+    const template = await this.getTemplate('benchmarkMoveTable', { indexes });
+
+    await this.sendMail(email, 'Benchmark moves', template);
+  }
+
+  async sendTestMail(email: string, indexes: Index[]) {
     const template = await this.getTemplate('benchmarkMoveTable', { indexes });
 
     await this.sendMail(email, 'Benchmark moves', template);
