@@ -88,6 +88,16 @@
         }
       }
 
+      .epsTable {
+        padding: 10px 49px 0 49px;
+      }
+
+      @media screen and (max-width: 400px) {
+        .epsTable {
+          padding: 10px 5px 0 5px !important;
+        }
+      }
+
       /* :root {
         color-scheme: light dark;
         supported-color-schemes: light dark;
@@ -147,7 +157,7 @@
         padding-bottom: 40px;
       "
     >
-      <div style="max-width: 670px; padding: 0 15px;">
+      <div style="max-width: 670px; padding: 0 15px">
         <!-- Прехедер -->
         <div
           style="
@@ -181,120 +191,8 @@
             font-family: 'Inter', Arial, sans-serif, Helvetica;
           "
         >
-          <tr>
-            <td>
-              <table
-                width="100%"
-                border="0"
-                cellpadding="0"
-                cellspacing="0"
-                role="presentation"
-                style="margin-bottom: 12px; border-collapse: collapse"
-              >
-                <tr>
-                  <!-- Левый текст -->
-                  <td
-                    align="left"
-                    style="
-                      font-family: 'Inter', Arial, sans-serif;
-                      font-size: 16px;
-                      font-weight: 700;
-                      color: #000;
-                      vertical-align: middle;
-                    "
-                  >
-                    Indexes
-                  </td>
-                  <!-- Правый текст -->
-                  <td
-                    align="right"
-                    style="vertical-align: middle; white-space: nowrap"
-                  >
-                    <a
-                      href="https://macroglide.com"
-                      target="_blank"
-                      style="
-                        font-family: 'Inter', Arial, sans-serif;
-                        display: inline-block;
-                        font-size: 12px;
-                        line-height: 15px;
-                        font-weight: 400;
-                        color: rgba(0, 0, 0, 0.5);
-                        text-decoration: none;
-                      "
-                    >
-                      Detailed View →
-                    </a>
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-          <!-- Линия -->
-          <tr>
-            <td>
-              <table
-                width="100%"
-                border="0"
-                cellpadding="0"
-                cellspacing="0"
-                role="presentation"
-              >
-                <tr>
-                  <td
-                    style="
-                      border-top: 1px solid #cccccc;
-                      font-size: 1px;
-                      line-height: 1px;
-                    "
-                  >
-                    &nbsp;
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-          <!-- Таблицы -->
-          <table
-            width="100%"
-            border="0"
-            cellpadding="0"
-            cellspacing="0"
-            role="presentation"
-          >
-            <tr>
-              <td>
-                <table 
-                  width="100%"
-                  border="0"
-                  cellpadding="0"
-                  cellspacing="0"
-                  role="presentation"
-                >
-                  <% if (locals.indexes && indexes.length > 0) { %>
-                    <% indexes.forEach(function(indexData) { %>
-                      <%- include('table', { data: indexData }) %>
-                    <% }); %>
-                  <% } %>
-                </table>
-              </td>
-            </tr>
-          </table>
-          <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
-            <tr>
-              <td align="left">
-                <span
-                  style="
-                    color: #6b7280;
-                    font-size: 12px;
-                    font-weight: 400;
-                    line-height: 30px;
-                  "
-                  ><%= headline %></span
-                >
-              </td>
-            </tr>
-          </table>
+          <%- include('partials/benchmarkTable') %> <%-
+          include('partials/epsTable') %>
         </table>
         <!--[if (gte mso 9) | (IE)]>
           </td>

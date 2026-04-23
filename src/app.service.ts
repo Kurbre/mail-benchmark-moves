@@ -57,6 +57,95 @@ export class AppService {
       isPositive: true,
     },
   ];
+  private eps = [
+    {
+      symbol: 'N225',
+      name: 'Nikkei 225',
+      actual: 5.94,
+      estimate: 5.49,
+      surprise: 0.45,
+      previous: 5.23,
+      isPositive: true,
+      logo: 'https://www.shutterstock.com/image-photo/coca-cola-logo-on-vibrant-600nw-2524254995.jpg',
+    },
+    {
+      symbol: 'N225',
+      name: 'Nikkei 225',
+      actual: 5.94,
+      estimate: 5.49,
+      surprise: 0.45,
+      previous: 5.23,
+      isPositive: false,
+      logo: 'https://www.shutterstock.com/image-photo/coca-cola-logo-on-vibrant-600nw-2524254995.jpg',
+    },
+    {
+      symbol: 'N225',
+      name: 'Nikkei 225',
+      actual: 5.94,
+      estimate: 5.49,
+      surprise: 0.45,
+      previous: 5.23,
+      isPositive: true,
+      logo: 'https://www.shutterstock.com/image-photo/coca-cola-logo-on-vibrant-600nw-2524254995.jpg',
+    },
+    {
+      symbol: 'N225',
+      name: 'Nikkei 225',
+      actual: 5.94,
+      estimate: 5.49,
+      surprise: 0.45,
+      previous: 5.23,
+      isPositive: false,
+      logo: 'https://www.shutterstock.com/image-photo/coca-cola-logo-on-vibrant-600nw-2524254995.jpg',
+    },
+    {
+      symbol: 'N225',
+      name: 'Nikkei 225',
+      actual: 5.94,
+      estimate: 5.49,
+      surprise: 0.45,
+      previous: 5.23,
+      isPositive: false,
+      logo: 'https://www.shutterstock.com/image-photo/coca-cola-logo-on-vibrant-600nw-2524254995.jpg',
+    },
+  ];
+  private macro = [
+    {
+      name: 'Nikkei 225',
+      actual: 5.94,
+      forecast: 5.49,
+      previous: 5.23,
+      logo: 'https://www.shutterstock.com/image-photo/coca-cola-logo-on-vibrant-600nw-2524254995.jpg',
+    },
+    {
+      name: 'Nikkei 225',
+      actual: 5.94,
+      forecast: 5.49,
+      previous: 5.23,
+      logo: 'https://www.shutterstock.com/image-photo/coca-cola-logo-on-vibrant-600nw-2524254995.jpg',
+    },
+    {
+      name: 'Nikkei 225',
+      actual: 5.94,
+      forecast: 5.49,
+      previous: 5.23,
+      logo: 'https://www.shutterstock.com/image-photo/coca-cola-logo-on-vibrant-600nw-2524254995.jpg',
+    },
+    {
+      name: 'Nikkei 225',
+      actual: 5.94,
+      forecast: 5.49,
+      previous: 5.23,
+      logo: 'https://www.shutterstock.com/image-photo/coca-cola-logo-on-vibrant-600nw-2524254995.jpg',
+    },
+    {
+      name: 'Nikkei 225',
+      actual: 5.94,
+      forecast: 5.49,
+      previous: 5.23,
+      logo: 'https://www.shutterstock.com/image-photo/coca-cola-logo-on-vibrant-600nw-2524254995.jpg',
+    },
+  ];
 
   constructor(private readonly configService: ConfigService) {
     this.transporter = nodemailer.createTransport({
@@ -95,14 +184,22 @@ export class AppService {
 
   async renderMail() {
     const indexes = this.indexes;
+    const eps = this.eps;
     const headline = 'Market data as of Apr 17, 2026 at 4:00 PM ET.';
 
-    return this.getTemplate('benchmarkMoveTable', { indexes, headline });
+    return this.getTemplate('benchmarkMoveTable', { indexes, headline, eps });
   }
 
   async sendTestMailForMock(email: string) {
     const indexes = this.indexes;
-    const template = await this.getTemplate('benchmarkMoveTable', { indexes });
+    const eps = this.eps;
+    const headline = 'Market data as of Apr 17, 2026 at 4:00 PM ET.';
+
+    const template = await this.getTemplate('benchmarkMoveTable', {
+      indexes,
+      headline,
+      eps,
+    });
 
     await this.sendMail(email, 'Benchmark moves', template);
   }

@@ -1,0 +1,154 @@
+<tr>
+  <td>
+    <table
+      width="100%"
+      border="0"
+      cellpadding="0"
+      cellspacing="0"
+      role="presentation"
+      style="border-bottom: 1px solid #cccccc; padding: 13px 0"
+    >
+      <tr>
+        <td>
+          <table border="0" cellpadding="0" cellspacing="0" role="presentation">
+            <tr>
+              <!-- Колонка с картинкой -->
+              <td style="vertical-align: middle">
+                <img
+                  src="<%= data.logo %>"
+                  width="36"
+                  alt="N225"
+                  border="0"
+                  style="
+                    display: block;
+                    width: 36px;
+                    height: 36px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                  "
+                />
+              </td>
+              <!-- Колонка правая с заголовком и метриком -->
+              <td style="padding-left: 13px; vertical-align: middle">
+                <span
+                  style="
+                    display: block;
+                    height: 20px;
+                    line-height: 20px;
+                    margin: 0 0 3px 0;
+                    white-space: nowrap;
+                    font-size: 17px;
+                    font-weight: 400;
+                    color: #000;
+                  "
+                  ><%= data.symbol %></span
+                >
+                <span
+                  style="
+                    font-size: 15px;
+                    font-weight: 400;
+                    color: rgba(0, 0, 0, 0.5);
+                    line-height: normal;
+                    margin: 0;
+                  "
+                  ><%= data.name.length > 15 ? data.name.substring(0, 15) +
+                  '...' : data.name %></span
+                >
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td class="epsTable">
+          <table
+            border="0"
+            cellpadding="0"
+            cellspacing="0"
+            role="presentation"
+            style="width: 100%"
+          >
+            <tr>
+              <td
+                align="left"
+                style="
+                  font-size: 14px;
+                  font-weight: 500;
+                  color: rgba(0, 0, 0, 0.5);
+                "
+              >
+                Actual:
+                <span
+                  style="
+                    padding-left: 3px;
+                    font-size: 15px;
+                    font-weight: 500;
+                    color: #000;
+                  "
+                  ><%= data.actual %></span
+                >
+              </td>
+              <td
+                align="center"
+                style="
+                  font-size: 14px;
+                  font-weight: 500;
+                  color: rgba(0, 0, 0, 0.5);
+                "
+              >
+                Estimate:
+                <span
+                  style="
+                    padding-left: 3px;
+                    font-size: 15px;
+                    font-weight: 500;
+                    color: #000;
+                  "
+                  ><%= data.estimate %></span
+                >
+              </td>
+              <td
+                align="center"
+                style="
+                  font-size: 14px;
+                  font-weight: 500;
+                  color: rgba(0, 0, 0, 0.5);
+                "
+              >
+                Surprise:
+                <span
+                  style="
+                    padding-left: 3px;
+                    font-size: 15px;
+                    font-weight: 500;
+                    color: <%=  data.isPositive ? '#14a900' : '#d70000' %>
+                  "
+                  ><%= data.isPositive ? '+' : '-' %><%= data.surprise %></span
+                >
+              </td>
+              <td
+                align="right"
+                style="
+                  font-size: 14px;
+                  font-weight: 500;
+                  color: rgba(0, 0, 0, 0.5);
+                "
+              >
+                Previous:
+                <span
+                  style="
+                    padding-left: 3px;
+                    font-size: 15px;
+                    font-weight: 500;
+                    color: #000;
+                  "
+                  ><%= data.previous %></span
+                >
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </td>
+</tr>
