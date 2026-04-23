@@ -5,7 +5,7 @@ import juice from 'juice';
 import { join } from 'path';
 import process from 'process';
 import * as nodemailer from 'nodemailer';
-import { Index } from './dto/indexes.dto';
+import { Index, IndexesDto } from './dto/indexes.dto';
 
 @Injectable()
 export class AppService {
@@ -116,6 +116,8 @@ export class AppService {
       forecast: 5.49,
       previous: 5.23,
       logo: 'https://www.shutterstock.com/image-photo/coca-cola-logo-on-vibrant-600nw-2524254995.jpg',
+      time: '10:00',
+      num: 1,
     },
     {
       name: 'Nikkei 225',
@@ -123,6 +125,8 @@ export class AppService {
       forecast: 5.49,
       previous: 5.23,
       logo: 'https://www.shutterstock.com/image-photo/coca-cola-logo-on-vibrant-600nw-2524254995.jpg',
+      time: '10:00',
+      num: 3,
     },
     {
       name: 'Nikkei 225',
@@ -130,6 +134,8 @@ export class AppService {
       forecast: 5.49,
       previous: 5.23,
       logo: 'https://www.shutterstock.com/image-photo/coca-cola-logo-on-vibrant-600nw-2524254995.jpg',
+      time: '10:00',
+      num: 1,
     },
     {
       name: 'Nikkei 225',
@@ -137,6 +143,8 @@ export class AppService {
       forecast: 5.49,
       previous: 5.23,
       logo: 'https://www.shutterstock.com/image-photo/coca-cola-logo-on-vibrant-600nw-2524254995.jpg',
+      time: '10:00',
+      num: 2,
     },
     {
       name: 'Nikkei 225',
@@ -144,6 +152,8 @@ export class AppService {
       forecast: 5.49,
       previous: 5.23,
       logo: 'https://www.shutterstock.com/image-photo/coca-cola-logo-on-vibrant-600nw-2524254995.jpg',
+      time: '10:00',
+      num: 3,
     },
   ];
 
@@ -185,27 +195,35 @@ export class AppService {
   async renderMail() {
     const indexes = this.indexes;
     const eps = this.eps;
+    const macro = this.macro;
     const headline = 'Market data as of Apr 17, 2026 at 4:00 PM ET.';
 
-    return this.getTemplate('benchmarkMoveTable', { indexes, headline, eps });
+    return this.getTemplate('benchmarkMoveTable', {
+      indexes,
+      headline,
+      eps,
+      macro,
+    });
   }
 
   async sendTestMailForMock(email: string) {
     const indexes = this.indexes;
     const eps = this.eps;
+    const macro = this.macro;
     const headline = 'Market data as of Apr 17, 2026 at 4:00 PM ET.';
 
     const template = await this.getTemplate('benchmarkMoveTable', {
       indexes,
       headline,
       eps,
+      macro,
     });
 
     await this.sendMail(email, 'Benchmark moves', template);
   }
 
-  async sendTestMail(email: string, indexes: Index[]) {
-    const template = await this.getTemplate('benchmarkMoveTable', { indexes });
+  async sendTestMail(email: string, dto: IndexesDto) {
+    const template = await this.getTemplate('benchmarkMoveTable', dto);
 
     await this.sendMail(email, 'Benchmark moves', template);
   }

@@ -75,18 +75,21 @@
                   font-size: 14px;
                   font-weight: 500;
                   color: rgba(0, 0, 0, 0.5);
+                  padding-right: 15px;
                 "
               >
-                Actual:
-                <span
-                  style="
-                    padding-left: 3px;
-                    font-size: 15px;
-                    font-weight: 500;
-                    color: #000;
-                  "
-                  ><%= data.actual %></span
-                >
+                <div style="display: inline-block; text-align: center">
+                  Actual:
+                  <span
+                    style="
+                      padding-left: 3px;
+                      font-size: 15px;
+                      font-weight: 500;
+                      color: #000;
+                    "
+                    ><%= data.actual %></span
+                  >
+                </div>
               </td>
               <td
                 align="center"
@@ -94,18 +97,21 @@
                   font-size: 14px;
                   font-weight: 500;
                   color: rgba(0, 0, 0, 0.5);
+                  padding-right: 15px;
                 "
               >
-                Estimate:
-                <span
-                  style="
-                    padding-left: 3px;
-                    font-size: 15px;
-                    font-weight: 500;
-                    color: #000;
-                  "
-                  ><%= data.estimate %></span
-                >
+                <div style="display: inline-block; text-align: center">
+                  Estimate:
+                  <span
+                    style="
+                      padding-left: 3px;
+                      font-size: 15px;
+                      font-weight: 500;
+                      color: #000;
+                    "
+                    ><%= data.estimate %></span
+                  >
+                </div>
               </td>
               <td
                 align="center"
@@ -113,18 +119,22 @@
                   font-size: 14px;
                   font-weight: 500;
                   color: rgba(0, 0, 0, 0.5);
+                  padding-right: 15px;
                 "
               >
-                Surprise:
-                <span
-                  style="
+                <div style="display: inline-block; text-align: center">
+                  Surprise:
+                  <span
+                    style="
                     padding-left: 3px;
                     font-size: 15px;
                     font-weight: 500;
                     color: <%=  data.isPositive ? '#14a900' : '#d70000' %>
                   "
-                  ><%= data.isPositive ? '+' : '-' %><%= data.surprise %></span
-                >
+                    ><%= data.isPositive ? '+' : '-' %><%= data.surprise
+                    %></span
+                  >
+                </div>
               </td>
               <td
                 align="right"
@@ -134,16 +144,18 @@
                   color: rgba(0, 0, 0, 0.5);
                 "
               >
-                Previous:
-                <span
-                  style="
-                    padding-left: 3px;
-                    font-size: 15px;
-                    font-weight: 500;
-                    color: #000;
-                  "
-                  ><%= data.previous %></span
-                >
+                <div style="display: inline-block; text-align: center">
+                  Previous:
+                  <span
+                    style="
+                      padding-left: 3px;
+                      font-size: 15px;
+                      font-weight: 500;
+                      color: #000;
+                    "
+                    ><%= data.previous %></span
+                  >
+                </div>
               </td>
             </tr>
           </table>

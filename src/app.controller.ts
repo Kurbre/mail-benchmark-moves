@@ -71,7 +71,7 @@ export class AppController {
       },
     },
   })
-  sendMail(@Param('email') email: string, @Body() { indexes }: IndexesDto) {
-    return this.appService.sendTestMail(email, indexes);
+  sendMail(@Param('email') email: string, @Body() dto: IndexesDto) {
+    return this.appService.sendTestMail(email, dto);
   }
 }

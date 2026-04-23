@@ -98,6 +98,17 @@
         }
       }
 
+      .macroTable {
+        padding-top: 13px;
+        padding-right: 49px;
+      }
+
+      @media screen and (max-width: 400px) {
+        .macroTable {
+          padding-right: 0 !important;
+        }
+      }
+
       /* :root {
         color-scheme: light dark;
         supported-color-schemes: light dark;
@@ -192,7 +203,7 @@
           "
         >
           <%- include('partials/benchmarkTable') %> <%-
-          include('partials/epsTable') %>
+          include('partials/epsTable') %><%- include('partials/macroTable') %>
         </table>
         <!--[if (gte mso 9) | (IE)]>
           </td>
