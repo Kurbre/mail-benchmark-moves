@@ -230,8 +230,17 @@ export class AppService {
 
   async getEmailWeightReport() {
     const file = join(process.cwd(), 'src', 'mail', `benchmarkMoveTable.ejs`);
+    const indexes = this.indexes;
+    const eps = this.eps;
+    const macro = this.macro;
+    const headline = 'Market data as of Apr 17, 2026 at 4:00 PM ET.';
 
-    const rawHtml = await renderFile(file, this.indexes);
+    const rawHtml = await renderFile(file, {
+      indexes,
+      headline,
+      eps,
+      macro,
+    });
 
     const finalHtml = juice(rawHtml);
 
