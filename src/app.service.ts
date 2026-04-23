@@ -95,8 +95,9 @@ export class AppService {
 
   async renderMail() {
     const indexes = this.indexes;
+    const headline = 'Market data as of Apr 17, 2026 at 4:00 PM ET.';
 
-    return this.getTemplate('benchmarkMoveTable', { indexes });
+    return this.getTemplate('benchmarkMoveTable', { indexes, headline });
   }
 
   async sendTestMailForMock(email: string) {
