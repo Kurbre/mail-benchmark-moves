@@ -178,52 +178,68 @@
                   <%= data.time %>
                 </div>
               </td>
-              <td
-                style="
-                  font-size: 14px;
-                  font-weight: 500;
-                  color: rgba(0, 0, 0, 0.5);
-                  padding-left: 15px;
-                "
-                align="left"
-              >
-                <div style="display: inline-block; text-align: center">
-                  Actual:
-                  <span style="font-size: 15px; font-weight: 500; color: #000"
-                    ><%= data.actual %></span
-                  >
-                </div>
-              </td>
-              <td
-                style="
-                  font-size: 14px;
-                  font-weight: 500;
-                  color: rgba(0, 0, 0, 0.5);
-                  padding: 0 15px;
-                "
-                align="center"
-              >
-                <div style="display: inline-block; text-align: center">
-                  Forecast:
-                  <span style="font-size: 15px; font-weight: 500; color: #000"
-                    ><%= data.forecast %></span
-                  >
-                </div>
-              </td>
-              <td
-                align="right"
-                style="
-                  font-size: 14px;
-                  font-weight: 500;
-                  color: rgba(0, 0, 0, 0.5);
-                "
-              >
-                <div style="display: inline-block; text-align: center">
-                  <span>Previous:</span>
-                  <span style="font-size: 15px; font-weight: 500; color: #000"
-                    ><%= data.previous %></span
-                  >
-                </div>
+              <td>
+                <table
+                  border="0"
+                  cellpadding="0"
+                  cellspacing="0"
+                  role="presentation"
+                  width="100%"
+                >
+                  <tr>
+                    <td
+                      style="
+                        font-size: 14px;
+                        font-weight: 500;
+                        color: rgba(0, 0, 0, 0.5);
+                        padding-left: 15px;
+                      "
+                      align="left"
+                    >
+                      <div style="text-align: center">
+                        Actual:
+                        <span
+                          style="font-size: 15px; font-weight: 500; color: #000"
+                          ><%= data.actual %></span
+                        >
+                      </div>
+                    </td>
+                    <td style="width: 10.5px; font-size: 0">&nbsp;</td>
+                    <td
+                      style="
+                        font-size: 14px;
+                        font-weight: 500;
+                        color: rgba(0, 0, 0, 0.5);
+                      "
+                      align="center"
+                    >
+                      <div style="text-align: center">
+                        Forecast:
+                        <span
+                          style="font-size: 15px; font-weight: 500; color: #000"
+                          ><%= data.forecast %></span
+                        >
+                      </div>
+                    </td>
+                    <td style="width: 10.5px; font-size: 0">&nbsp;</td>
+                    <td
+                      align="right"
+                      style="
+                        font-size: 14px;
+                        font-weight: 500;
+                        color: rgba(0, 0, 0, 0.5);
+                      "
+                    >
+                      <div style="text-align: center">
+                        <span>Previous:</span>
+                        <span
+                          style="font-size: 15px; font-weight: 500; color: #000"
+                          ><%= data.previous %></span
+                        >
+                      </div>
+                    </td>
+                  </tr>
+                </table>
               </td>
             </tr>
           </table>
